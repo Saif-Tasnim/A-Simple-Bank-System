@@ -38,7 +38,40 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
 
 
 document.getElementById('btn-withdraw').addEventListener('click', function () {
-    console.log("All set")
+    const withdrawField = document.getElementById('withdraw-field');
+    const withdrawAmount = withdrawField.value;
+    const withdrawMoney = parseFloat(withdrawAmount)
+    const totalValue = document.getElementById('total-value');
+    const taka = totalValue.innerText;
+    const totalAmount = parseFloat(taka);
+
+    if (withdrawAmount > 0 && withdrawAmount != '') {
+
+        if (withdrawMoney <= totalAmount) {
+            previousValue = document.getElementById('withdraw-value');
+            previousAmount = previousValue.innerText;
+
+            const sum = withdrawMoney + parseFloat(previousAmount);
+            previousValue.innerText = sum;
+            
+            const restMoney = totalAmount - withdrawMoney;
+            totalValue.innerText = restMoney;
+        }
+
+        else{
+            alert("tui beta fokir abar eto taka chas");
+        }
+
+
+        withdrawField.value = "";
+
+
+
+    }
+
+    else {
+        alert('Your amount is not valid. please insert valid amount');
+    }
 })
 
 
